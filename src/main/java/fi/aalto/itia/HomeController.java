@@ -11,11 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import fi.aalto.itia.adr_em_common.ADR_EM_Common;
 import fi.aalto.itia.adr_em_common.SimulationElement;
 import fi.aalto.itia.aggregator.Aggregator;
+import fi.aalto.itia.aggregator.FrequencyProducer;
 
 /**
  * Handles requests for the application home page.
@@ -26,11 +28,11 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
-	private static final String START_CMD = "startAgg";
-	private static final String STOP_CMD = "stopAgg";
-
 	private static String notes;
 	private static boolean simulationStarted = false;
+
+	// Start the frequency Thread
+	private static FrequencyProducer freq = FrequencyProducer.startInstance();
 
 	// Aggregator declarations
 	private Aggregator agg;
@@ -109,6 +111,12 @@ public class HomeController {
 		}
 
 		return "statsAgg";
+	}
+
+	@RequestMapping(value = "/frequency", method = RequestMethod.GET)
+	@ResponseBody
+	public String frequency(Locale locale, Model model) {
+		return FrequencyProducer.getCurrentFreqValue();
 	}
 
 }
