@@ -20,6 +20,7 @@
 	<P>The time on the server is ${serverTime}.</P>
 	
 	<a href="http://localhost:8080/itia/statsAgg" target="_blank">StatsAgg</a>
+	<a href="http://localhost:8080/itia/frequency" target="_blank">Frequency</a>
 
 </body>
 </html>

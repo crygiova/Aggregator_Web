@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.RedirectView;
 
 import fi.aalto.itia.adr_em_common.ADR_EM_Common;
-import fi.aalto.itia.adr_em_common.SimulationElement;
 import fi.aalto.itia.aggregator.Aggregator;
 import fi.aalto.itia.aggregator.FrequencyProducer;
 
