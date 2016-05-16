@@ -11,16 +11,16 @@
 
 	<p>Aggregator Simulation Started: ${simStarted}</p>
 
-	<a href="http://localhost:8080/itia/startAgg">Start Aggregator</a>
-	<a href="http://localhost:8080/itia/stopAgg">Stop Aggregator</a>
-	<a href="http://localhost:8080/itia">HOME</a>
+	<a href="startAgg">Start Aggregator</a>
+	<a href="stopAgg">Stop Aggregator</a>
+	<a href="home">HOME</a>
 	
 	<P>Notes: ${notes}.</P>
 	
 	<P>The time on the server is ${serverTime}.</P>
 	
-	<a href="http://localhost:8080/itia/statsAgg" target="_blank">StatsAgg</a>
-	<a href="http://localhost:8080/itia/frequency" target="_blank">Frequency</a>
+	<a href="aggregatorStats" target="_blank">StatsAgg</a>
+	<a href="frequency" target="_blank">Frequency</a>
 
 </body>
 </html>

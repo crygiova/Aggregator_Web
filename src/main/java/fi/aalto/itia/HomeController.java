@@ -29,8 +29,8 @@ public class HomeController {
 	private static String notes;
 	private static boolean simulationStarted = false;
 
-	// Start the frequency Thread
-	private static FrequencyProducer freq = FrequencyProducer.startInstance();
+	// TODO CHange Start the frequency Thread
+	private static FrequencyProducer freq;
 
 	// Aggregator declarations
 	private Aggregator agg;
@@ -71,6 +71,8 @@ public class HomeController {
 		}
 		if (!simulationStarted) {
 			// start simulation
+			//Start Frequency Producer
+			freq = FrequencyProducer.startInstance();
 			t_agg = new Thread(agg);
 			t_agg.start();
 			simulationStarted = true;
@@ -93,6 +95,8 @@ public class HomeController {
 			// once the a simulation is over it returns a new aggregator
 			agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 			logger.debug("Aggregator Simulation Stopped");
+			//STop Frequency PRoducer
+			FrequencyProducer.setKeepGoingToFalse();
 		} else {
 			// simulation already already stopped
 			notes += "Simulation Already Stopped";
