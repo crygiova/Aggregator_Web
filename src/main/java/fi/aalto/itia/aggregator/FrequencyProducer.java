@@ -14,7 +14,7 @@ public class FrequencyProducer implements Runnable, Serializable {
 	 */
 	private static final long serialVersionUID = 3212023433186094641L;
 	private static final int FREQ_UPDATE = 1000;
-	private static final String FREQ_FILE_NAME = "freq.csv";
+	private static final String FREQ_FILE_NAME = "freqDownSlow.csv";
 	private static final String NOMINAL_FREQ_VALUE = "50.0";
 	/**
 	 * 
@@ -52,9 +52,10 @@ public class FrequencyProducer implements Runnable, Serializable {
 
 	}
 
-	//starts the singleton instance of the class (with start it means the Thread itself)
+	// starts the singleton instance of the class (with start it means the
+	// Thread itself)
 	public static FrequencyProducer startInstance() {
-		if (gf == null || keepGoing == false) {
+		if (freq_t == null || gf == null || keepGoing == false) {
 			gf = new FrequencyProducer();
 			freq_t = new Thread(gf);
 			freq_t.start();
@@ -65,7 +66,7 @@ public class FrequencyProducer implements Runnable, Serializable {
 	@Override
 	public void run() {
 		while (keepGoing) {
-			if (index >= frequency.size()) {
+			if (index >= frequency.size() - 1) {
 				index = -1;
 			}
 			currentFreqValue.set(frequency.get(++index));
@@ -93,6 +94,8 @@ public class FrequencyProducer implements Runnable, Serializable {
 	public static void setKeepGoingToFalse() {
 		index = -1;
 		FrequencyProducer.keepGoing = false;
+		gf = null;
+		freq_t = null;
 	}
 
 }

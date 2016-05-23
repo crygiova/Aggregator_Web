@@ -21,10 +21,10 @@ import fi.aalto.itia.aggregator.FrequencyProducer;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class AggController {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(HomeController.class);
+			.getLogger(AggController.class);
 
 	private static String notes;
 	private static boolean simulationStarted = false;
@@ -58,7 +58,6 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("notes", notes);
 		model.addAttribute("simStarted", simulationStarted);
-
 		// mapped jsp file
 		return "home";
 	}
