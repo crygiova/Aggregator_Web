@@ -20,7 +20,8 @@
 	<P>The time on the server is ${serverTime}.</P>
 	
 	<a href="aggregatorStats" target="_blank">StatsAgg</a>
-	<a href="frequency" target="_blank">Frequency</a>
+	<a href="frequency" target="_blank">Frequency Producer</a>
+	<a href="freqNominalOn" target="_blank">FreQNominal ON or OFF</a>
 
 </body>
 </html>

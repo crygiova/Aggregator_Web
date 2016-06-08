@@ -70,7 +70,7 @@ public class AggController {
 		}
 		if (!simulationStarted) {
 			// start simulation
-			//Start Frequency Producer
+			// Start Frequency Producer
 			freq = FrequencyProducer.startInstance();
 			t_agg = new Thread(agg);
 			t_agg.start();
@@ -94,7 +94,7 @@ public class AggController {
 			// once the a simulation is over it returns a new aggregator
 			agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 			logger.debug("Aggregator Simulation Stopped");
-			//STop Frequency PRoducer
+			// STop Frequency PRoducer
 			FrequencyProducer.setKeepGoingToFalse();
 		} else {
 			// simulation already already stopped
@@ -105,13 +105,19 @@ public class AggController {
 	}
 
 	@RequestMapping(value = "/statsAgg", method = RequestMethod.GET)
-	public String aggregatorStats(Locale locale, Model model) {
+	public String statsAgg(Locale locale, Model model) {
 
 		if (agg != null) {
 			model.addAttribute("nCons", agg.getConsumersSize());
 		}
 
 		return "statsAgg";
+	}
+
+	@RequestMapping(value = "/freqNominalOn", method = RequestMethod.GET)
+	public @ResponseBody String freqNominalOn() {
+		freq.setNominalModeOn(!this.freq.isNominalModeOn());
+		return "NominalMode ON: " + this.freq.isNominalModeOn();
 	}
 
 	@RequestMapping(value = "/frequency", method = RequestMethod.GET)

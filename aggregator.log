@@ -1,0 +1,422 @@
+giu 06, 2016 2:47:19 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: Start Aggregator
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 2:48:04 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNT LOOP MAX 
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 2:55:05 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:01:07 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:08:08 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:15:08 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 29680.0
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:21:08 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:28:09 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:35:09 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:41:09 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:48:09 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 3:55:10 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 29540.0
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:02:10 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:09:10 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:16:11 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:23:11 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:30:11 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:37:11 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:44:12 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: **********Elaborate Instructions********************
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+-------UPBUOND ALGORITHM-------
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: +++++++++++++++++++ TargetFlex = 30000.0
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Under Freq:
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX UNDER : 30030.0
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+Above Freq
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: TOTAL FLEX Above : 30030.0
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator elaborateInstructionsV2
+INFO: 
+**********End Algorithm********************
+giu 06, 2016 4:51:12 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: COUNTERs TRIGGERED THE UPDATE
+giu 06, 2016 4:55:13 PM fi.aalto.itia.aggregator.Aggregator run
+INFO: End of Aggregator

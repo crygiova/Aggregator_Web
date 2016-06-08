@@ -6,16 +6,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
+
+import fi.aalto.itia.adr_em_common.ADR_EM_Common;
+import fi.aalto.itia.util.Utility;
 
 public class FrequencyProducer implements Runnable, Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3212023433186094641L;
-	private static final int FREQ_UPDATE = 1000;
-	private static final String FREQ_FILE_NAME = "freqDownSlow.csv";
+	private static final int FREQ_UPDATE = ADR_EM_Common.ONE_SECOND;
+	private static final String FREQ_FILE = "FREQ_FILE";
+	private static final String FILE_NAME_PROPERTIES = Aggregator.FILE_NAME_PROPERTIES;
 	private static final String NOMINAL_FREQ_VALUE = "50.0";
+	private static final String FREQ_FILE_NAME;
+
 	/**
 	 * 
 	 */
@@ -27,7 +34,11 @@ public class FrequencyProducer implements Runnable, Serializable {
 	private static FrequencyProducer gf;
 	private static Thread freq_t;
 
+	private boolean nominalModeOn = false;
+
 	static {
+		Properties properties = Utility.getProperties(FILE_NAME_PROPERTIES);
+		FREQ_FILE_NAME = properties.getProperty(FREQ_FILE);
 		ClassLoader classLoader = Thread.currentThread()
 				.getContextClassLoader();
 		BufferedReader br = null;
@@ -43,6 +54,7 @@ public class FrequencyProducer implements Runnable, Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private FrequencyProducer() {
@@ -69,7 +81,11 @@ public class FrequencyProducer implements Runnable, Serializable {
 			if (index >= frequency.size() - 1) {
 				index = -1;
 			}
-			currentFreqValue.set(frequency.get(++index));
+			if (this.nominalModeOn) {
+				currentFreqValue.set(NOMINAL_FREQ_VALUE);
+			} else {
+				currentFreqValue.set(frequency.get(++index));
+			}
 
 			try {
 				Thread.sleep(FREQ_UPDATE);
@@ -78,6 +94,14 @@ public class FrequencyProducer implements Runnable, Serializable {
 			}
 		}
 
+	}
+
+	public boolean isNominalModeOn() {
+		return nominalModeOn;
+	}
+
+	public void setNominalModeOn(boolean nominalModeOn) {
+		this.nominalModeOn = nominalModeOn;
 	}
 
 	public static String getCurrentFreqValue() {
