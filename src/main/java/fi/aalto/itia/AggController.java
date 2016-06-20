@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,107 +24,114 @@ import fi.aalto.itia.aggregator.FrequencyProducer;
 @Controller
 public class AggController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(AggController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AggController.class);
 
-	private static String notes;
-	private static boolean simulationStarted = false;
+    private static String notes;
+    private static boolean simulationStarted = false;
 
-	// TODO CHange Start the frequency Thread
-	private static FrequencyProducer freq;
+    // TODO CHange Start the frequency Thread
+    private static FrequencyProducer freq;
 
-	// Aggregator declarations
-	private Aggregator agg;
-	private Thread t_agg;
+    // Aggregator declarations
+    private Aggregator agg;
+    private Thread t_agg;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(
-			@RequestParam(value = "cmd", required = false) String cmd,
-			Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		notes = "";
+    /**
+     * Simply selects the home view to render by returning its name.
+     */
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(@RequestParam(value = "cmd", required = false) String cmd, Locale locale,
+	    Model model) {
+	logger.info("Welcome home! The client locale is {}.", locale);
+	notes = "";
 
-		if (agg == null) {
-			agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
-		}
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("notes", notes);
-		model.addAttribute("simStarted", simulationStarted);
-		// mapped jsp file
-		return "home";
+	if (agg == null) {
+	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 	}
 
-	@RequestMapping(value = "/startAgg", method = RequestMethod.GET)
-	public String startAgg(Locale locale, Model model) {
-		logger.info("Starting the Aggregator! The client locale is {}.", locale);
-		if (agg == null) {
-			agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
-		}
-		if (!simulationStarted) {
-			// start simulation
-			// Start Frequency Producer
-			freq = FrequencyProducer.startInstance();
-			t_agg = new Thread(agg);
-			t_agg.start();
-			simulationStarted = true;
-			logger.debug("Aggregator Simulation Started");
-		} else {
-			// simulation already started
-			notes += "Simulation Already Started";
-			logger.debug("Simulation Already Started");
-		}
-		return "redirect:";
+	Date date = new Date();
+	DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,
+		locale);
+	String formattedDate = dateFormat.format(date);
+
+	model.addAttribute("serverTime", formattedDate);
+	model.addAttribute("notes", notes);
+	model.addAttribute("simStarted", simulationStarted);
+	// mapped jsp file
+	return "home";
+    }
+
+    @RequestMapping(value = "/startAgg", method = RequestMethod.GET)
+    public String startAgg(Locale locale, Model model) {
+	logger.info("Starting the Aggregator! The client locale is {}.", locale);
+	if (agg == null) {
+	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	}
+	if (!simulationStarted) {
+	    // start simulation
+	    // Start Frequency Producer
+	    freq = FrequencyProducer.startInstance();
+	    t_agg = new Thread(agg);
+	    t_agg.start();
+	    simulationStarted = true;
+	    logger.debug("Aggregator Simulation Started");
+	} else {
+	    // simulation already started
+	    notes += "Simulation Already Started";
+	    logger.debug("Simulation Already Started");
+	}
+	return "redirect:";
+    }
+
+    @RequestMapping(value = "/stopAgg", method = RequestMethod.GET)
+    public String stopAgg(Locale locale, Model model) {
+	logger.info("Starting the Aggregator! The client locale is {}.", locale);
+	if (simulationStarted) {
+	    // stop simulation
+	    agg.setKeepGoing(false);
+	    simulationStarted = false;
+	    // once the a simulation is over it returns a new aggregator
+	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    logger.debug("Aggregator Simulation Stopped");
+	    // STop Frequency PRoducer
+	    FrequencyProducer.setKeepGoingToFalse();
+	} else {
+	    // simulation already already stopped
+	    notes += "Simulation Already Stopped";
+	    logger.debug("Simulation Already Stopped");
+	}
+	return "redirect:";
+    }
+
+    @RequestMapping(value = "/statsAgg", method = RequestMethod.GET)
+    public String statsAgg(Locale locale, Model model) {
+
+	if (agg != null) {
+	    model.addAttribute("nCons", agg.getConsumersSize());
 	}
 
-	@RequestMapping(value = "/stopAgg", method = RequestMethod.GET)
-	public String stopAgg(Locale locale, Model model) {
-		logger.info("Starting the Aggregator! The client locale is {}.", locale);
-		if (simulationStarted) {
-			// stop simulation
-			agg.setKeepGoing(false);
-			simulationStarted = false;
-			// once the a simulation is over it returns a new aggregator
-			agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
-			logger.debug("Aggregator Simulation Stopped");
-			// STop Frequency PRoducer
-			FrequencyProducer.setKeepGoingToFalse();
-		} else {
-			// simulation already already stopped
-			notes += "Simulation Already Stopped";
-			logger.debug("Simulation Already Stopped");
-		}
-		return "redirect:";
-	}
+	return "statsAgg";
+    }
 
-	@RequestMapping(value = "/statsAgg", method = RequestMethod.GET)
-	public String statsAgg(Locale locale, Model model) {
+    @RequestMapping(value = "/freqNominalOn", method = RequestMethod.GET)
+    public @ResponseBody String freqNominalOn() {
+	freq.setCustomModeoff();
+	freq.setNominalModeOn(!this.freq.isNominalModeOn());
+	return "NominalMode ON: " + this.freq.isNominalModeOn();
+    }
 
-		if (agg != null) {
-			model.addAttribute("nCons", agg.getConsumersSize());
-		}
+    @RequestMapping(value = "/freqCustomOn/{someID}", method = RequestMethod.GET)
+    public @ResponseBody String freqCustomOn(@PathVariable(value = "someID") String custom) {
+	custom = custom.replace("p", ".");
+	freq.setNominalModeOn(false);
+	freq.setCustomModeOn(true, custom);
+	return "CustomMode ON: " + this.freq.isCustomModeOn() + " --Value:" + custom;
+    }
 
-		return "statsAgg";
-	}
-
-	@RequestMapping(value = "/freqNominalOn", method = RequestMethod.GET)
-	public @ResponseBody String freqNominalOn() {
-		freq.setNominalModeOn(!this.freq.isNominalModeOn());
-		return "NominalMode ON: " + this.freq.isNominalModeOn();
-	}
-
-	@RequestMapping(value = "/frequency", method = RequestMethod.GET)
-	@ResponseBody
-	public String frequency(Locale locale, Model model) {
-		return FrequencyProducer.getCurrentFreqValue();
-	}
+    @RequestMapping(value = "/frequency", method = RequestMethod.GET)
+    @ResponseBody
+    public String frequency(Locale locale, Model model) {
+	return FrequencyProducer.getCurrentFreqValue();
+    }
 
 }
