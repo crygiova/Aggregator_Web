@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.TreeMap;
 
 import fi.aalto.itia.adr_em_common.AgingADRConsumer;
@@ -246,5 +247,21 @@ public class AggregatorTest {
 	System.out.println("TOTAL FLEX Above : " + count);
 	System.out.println("\n**********End Algorithm********************");
 	return outMsg;
+    }
+
+    @Test
+    public void randomErrorGen() {
+	Random rand = new Random();
+	boolean b;
+	int counter = 0;
+	int total = 10000;
+	for (int i = 0; i < total; i++) {
+	    b = rand.nextDouble() > 0.1 ? true : false;
+	    if(!b)
+		counter++;
+	}
+	double percent = 1d *counter/total;
+	System.out.println(percent);
+
     }
 }

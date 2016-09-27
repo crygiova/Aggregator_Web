@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
@@ -46,6 +47,8 @@ public class Aggregator extends SimulationElement {
     private static final String TARGET_FLEX = "TARGET_FLEX";
     private static final String FREQ_BAND = "FREQ_BAND";
     private static final String BASE_NOMINAL = "BASE_NOMINAL";
+    private static final String ERRORS = "ERRORS";
+    private static final String PER_ERROR = "PER_ERROR";
     private static final String BASE_NOMINAL_ERROR = "BASE_NOMINAL_ERROR";
     private static final double MAX_FCRN_FREQ_VARIATION = 0.1d;
     private static final double NOMINAL_FREQ = 50d;
@@ -66,6 +69,10 @@ public class Aggregator extends SimulationElement {
     private static double baseNominal;
     private static final double baseNominalError;
     private static final double freqDeadBand;
+
+    // ERRORS INJECTIOn
+    private static boolean injectErrors = false;
+    private static final double PERCENT_ERROR;
 
     // TODO finish to use these 2 param properly
     private int newUpdates = 0;
@@ -96,17 +103,19 @@ public class Aggregator extends SimulationElement {
 	Properties properties = Utility.getProperties(FILE_NAME_PROPERTIES);
 	targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
 	baseNominal = Double.parseDouble(properties.getProperty(BASE_NOMINAL));
+	PERCENT_ERROR = Double.parseDouble(properties.getProperty(PER_ERROR));
 	// Percentage nominal error
 	baseNominalError = Double.parseDouble(properties.getProperty(BASE_NOMINAL_ERROR))
 		* targetFlex;
 	freqDeadBand = Double.parseDouble(properties.getProperty(FREQ_BAND));
+	injectErrors = Boolean.parseBoolean(properties.getProperty(ERRORS));
 	realTargetFlexDown = targetFlex;
 	realTargetFlexUp = targetFlex;
 	// File Handler
 	FileHandler fh;
 	try {
 	    // This block configure the logger with handler and formatter
-	    fh = new FileHandler("C:/Users/giovanc1/workspace_sts/Aggregator_Web/aggregator.log");
+	    fh = new FileHandler(ADR_EM_Common.OUT_FILE_DIR + "aggregator.log");
 	    log.addHandler(fh);
 	    SimpleFormatter formatter = new SimpleFormatter();
 	    fh.setFormatter(formatter);
@@ -178,7 +187,13 @@ public class Aggregator extends SimulationElement {
 		} else {
 		    log.info("COUNTERs TRIGGERED THE UPDATE");
 		}
-		sendInstructions(instrMap);
+		// if errors are to be injected
+		if (injectErrors) {
+		    sendInstructionsWithErrors(instrMap);
+		} else {
+		    sendInstructions(instrMap);
+		}
+
 		countLoops = 0;
 	    }
 
@@ -222,6 +237,27 @@ public class Aggregator extends SimulationElement {
 	for (InstructionsMessageContent imc : imcList) {
 	    this.sendMessage(SimulationMessageFactory.getInstructionMessage(this.inputQueueName,
 		    imc.getConsumerReceiver(), imc));
+
+	}
+    }
+
+    private void sendInstructionsWithErrors(TreeMap<String, InstructionsMessageContent> instrMap) {
+	ArrayList<InstructionsMessageContent> imcList = new ArrayList<InstructionsMessageContent>(
+		instrMap.values());
+	// send to the stats an empty simulation message that says it is a
+	// new update for the consumers
+	// used in case of error
+	Random rand = new Random();
+	boolean sendMsg;
+	this.sendMessage(SimulationMessageFactory.getEmptyAggToStatsMessage(this.inputQueueName,
+		ADR_EM_Common.STATS_NAME_QUEUE));
+	// sends with some errors based on PERCENT_ERROR
+	for (InstructionsMessageContent imc : imcList) {
+	    sendMsg = rand.nextDouble() > PERCENT_ERROR ? true : false;
+	    if (sendMsg) {
+		this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+			this.inputQueueName, imc.getConsumerReceiver(), imc));
+	    }
 	}
     }
 
@@ -741,17 +777,17 @@ public class Aggregator extends SimulationElement {
 	// + updateMessageContent.getAging().toString());
 	// }
 
-	//flexibility to cut
+	// flexibility to cut
 	double targetFlexToCut = realTargetFlexDown;
 	// active ADR frequency
 	double freqActionBand = MAX_FCRN_FREQ_VARIATION - freqDeadBand;
-	//used to stabilize baseNominal with Aggregated no ADR consumption
+	// used to stabilize baseNominal with Aggregated no ADR consumption
 	double flexControl = baseNominal - aggregatedNoADRConsumption;
-	//starting band
+	// starting band
 	double band = NOMINAL_FREQ - freqDeadBand;
 	double bufferBand = band;
 	double consumerPossibleCut;
-	
+
 	for (UpdateMessageContent updateMessageContent : collectionUpdate) {
 	    // if the rest of the consumers cannot cut else cond in the loop
 	    if (updateMessageContent.getTimeCut().compareTo(new Double(0d)) != 0
