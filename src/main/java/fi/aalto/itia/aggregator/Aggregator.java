@@ -56,7 +56,7 @@ public class Aggregator extends SimulationElement {
     private static final double TOP_FREQ = NOMINAL_FREQ + MAX_FCRN_FREQ_VARIATION;
     // for the run method says the max number of loops for an update(e.g. if
     // aggregator checks every 30 sec, every 5 min (10) there must be an update)
-    private static final int MAX_NUM_LOOP = 10;
+    private static final int MAX_NUM_LOOP = 2;
     private static final int INITIAL_DELAY_SEC = 120;
     // factor of consumer that sent an update that were involved in the DR
     private static final double UPDATE_AFTER_PERCENT = 0.4d;
