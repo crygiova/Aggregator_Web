@@ -56,7 +56,7 @@ public class Aggregator extends SimulationElement {
     private static final double TOP_FREQ = NOMINAL_FREQ + MAX_FCRN_FREQ_VARIATION;
     // for the run method says the max number of loops for an update(e.g. if
     // aggregator checks every 30 sec, every 5 min (10) there must be an update)
-    private static final int MAX_NUM_LOOP = 2;
+    private static final int MAX_NUM_LOOP = 10;
     private static final int INITIAL_DELAY_SEC = 120;
     // factor of consumer that sent an update that were involved in the DR
     private static final double UPDATE_AFTER_PERCENT = 0.4d;
@@ -768,7 +768,7 @@ public class Aggregator extends SimulationElement {
 	initConsumersHashSets();
 
 	// DELETE QUICK DEBUG
-	log.info("\n-------DownBuond ALGORITHM-------");
+	// log.info("\n-------DownBuond ALGORITHM-------");
 	// for (UpdateMessageContent updateMessageContent : collectionUpdate) {
 	// if (updateMessageContent.getTimeCut() != 0d)
 	// log.info(updateMessageContent.getConsumerSender() + " - DWnTimeCut: "
@@ -835,7 +835,7 @@ public class Aggregator extends SimulationElement {
 	}
 
 	// UPBUOND ALGORITHM
-	log.info("\n-------UPBUOND ALGORITHM-------");
+	// log.info("\n-------UPBUOND ALGORITHM-------");
 	// sort bu time increase
 	Collections.sort(collectionUpdate, UpdateMessageContent.OrderForUpElabComparator);
 	// DELETE QUICK DEBUG
@@ -913,10 +913,12 @@ public class Aggregator extends SimulationElement {
 	double count = 0d;
 	for (InstructionsMessageContent instructionsMessageContent : imc) {
 	    if (instructionsMessageContent.getUnderNominalFrequency() != 0)
-		log.info(instructionsMessageContent.getConsumerReceiver() + " - "
-			+ instructionsMessageContent.getUnderNominalFrequency() + " - "
-			+ instructionsMessageContent.getUnderNominalDecrease());
-	    count += instructionsMessageContent.getUnderNominalDecrease();
+		// log.info(instructionsMessageContent.getConsumerReceiver() +
+		// " - "
+		// + instructionsMessageContent.getUnderNominalFrequency() +
+		// " - "
+		// + instructionsMessageContent.getUnderNominalDecrease());
+		count += instructionsMessageContent.getUnderNominalDecrease();
 	}
 	log.info("TOTAL FLEX UNDER : " + count);
 	count = 0d;
@@ -925,10 +927,12 @@ public class Aggregator extends SimulationElement {
 
 	for (InstructionsMessageContent instructionsMessageContent : imc) {
 	    if (instructionsMessageContent.getAboveNominalFrequency() != 0)
-		log.info(instructionsMessageContent.getConsumerReceiver() + " - "
-			+ instructionsMessageContent.getAboveNominalFrequency() + " - "
-			+ instructionsMessageContent.getAboveNominalIncrease());
-	    count += instructionsMessageContent.getAboveNominalIncrease();
+		// log.info(instructionsMessageContent.getConsumerReceiver() +
+		// " - "
+		// + instructionsMessageContent.getAboveNominalFrequency() +
+		// " - "
+		// + instructionsMessageContent.getAboveNominalIncrease());
+		count += instructionsMessageContent.getAboveNominalIncrease();
 	}
 	log.info("TOTAL FLEX Above : " + count);
 	log.info("\n**********End Algorithm********************");
