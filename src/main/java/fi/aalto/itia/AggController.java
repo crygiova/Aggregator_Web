@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fi.aalto.itia.adr_em_common.ADR_EM_Common;
 import fi.aalto.itia.aggregator.Aggregator;
 import fi.aalto.itia.aggregator.FrequencyProducer;
+import fi.aalto.itia.aggregator.TaskAllocAggregator;
 
 /**
  * Handles requests for the application home page.
@@ -33,7 +34,7 @@ public class AggController {
     private static FrequencyProducer freq;
 
     // Aggregator declarations
-    private Aggregator agg;
+    private TaskAllocAggregator agg;
     private Thread t_agg;
 
     /**
@@ -46,7 +47,8 @@ public class AggController {
 	notes = "";
 
 	if (agg == null) {
-	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    //agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    agg = TaskAllocAggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 	}
 
 	Date date = new Date();
@@ -65,7 +67,8 @@ public class AggController {
     public String startAgg(Locale locale, Model model) {
 	logger.info("Starting the Aggregator! The client locale is {}.", locale);
 	if (agg == null) {
-	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    //agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    agg = TaskAllocAggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 	}
 	if (!simulationStarted) {
 	    // start simulation
@@ -91,7 +94,8 @@ public class AggController {
 	    agg.setKeepGoing(false);
 	    simulationStarted = false;
 	    // once the a simulation is over it returns a new aggregator
-	    agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    //agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
+	    agg = TaskAllocAggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 	    logger.debug("Aggregator Simulation Stopped");
 	    // STop Frequency PRoducer
 	    FrequencyProducer.setKeepGoingToFalse();
