@@ -43,9 +43,8 @@ public class AggController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@RequestParam(value = "cmd", required = false) String cmd, Locale locale,
 	    Model model) {
-	logger.info("Welcome home! The client locale is {}.", locale);
+	
 	notes = "";
-
 	if (agg == null) {
 	    //agg = Aggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
 	    agg = TaskAllocAggregator.getNewInstance(ADR_EM_Common.AGG_INPUT_QUEUE);
@@ -60,6 +59,7 @@ public class AggController {
 	model.addAttribute("notes", notes);
 	model.addAttribute("simStarted", simulationStarted);
 	// mapped jsp file
+	logger.info("Welcome home! The client locale is {}.", locale);
 	return "home";
     }
 
@@ -122,6 +122,14 @@ public class AggController {
 	freq.setCustomModeoff();
 	freq.setNominalModeOn(!this.freq.isNominalModeOn());
 	return "NominalMode ON: " + this.freq.isNominalModeOn();
+    }
+    
+    //enables and disables deadControl ni TaskAllocAggr
+    @RequestMapping(value = "/enableDead", method = RequestMethod.GET)
+    public @ResponseBody String enableDead() {
+	boolean negate = ! ((TaskAllocAggregator) agg).isEnableDeadControl();
+	((TaskAllocAggregator) agg).setEnableDeadControl(negate);
+	return "DeadControl ON: " + negate;
     }
 
     @RequestMapping(value = "/freqCustomOn/{someID}", method = RequestMethod.GET)
