@@ -125,7 +125,8 @@ public class TaskAllocAggregator extends SimulationElement {
 
     static {
 	Properties properties = Utility.getProperties(FILE_NAME_PROPERTIES);
-	targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
+	//targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
+	targetFlex = ADR_EM_Common.TARGET_FLEX;
 	baseNominal = Double.parseDouble(properties.getProperty(BASE_NOMINAL));
 	PERCENT_ERROR = Double.parseDouble(properties.getProperty(PER_ERROR));
 	// Percentage nominal error
@@ -242,7 +243,7 @@ public class TaskAllocAggregator extends SimulationElement {
 	// send to the stats an empty simulation message that says it is a
 	// new update for the consumers
 	this.sendMessage(SimulationMessageFactory.getEmptyAggToStatsMessage(this.inputQueueName,
-		ADR_EM_Common.STATS_NAME_QUEUE));
+		ADR_EM_Common.STATS_NAME_QUEUE), false);
 	// sends to every one even if there are not updates
 	for (InstructionsMessageContent imc : imcList) {
 	    this.sendMessage(SimulationMessageFactory.getInstructionMessage(this.inputQueueName,
@@ -506,9 +507,9 @@ public class TaskAllocAggregator extends SimulationElement {
 	    if (!useConstantBaseNominal) {
 		baseNominal = theoreticalConsumption.getMean();
 	    }
-
+	    //NoDElay Message
 	    this.sendMessage(SimulationMessageFactory.getStatsToAggUpdateMessage(
-		    this.inputQueueName, sm.getSender(), new StatsToAggUpdateContent(baseNominal)));
+		    this.inputQueueName, sm.getSender(), new StatsToAggUpdateContent(baseNominal)), false);
 	    // printout
 	    break;
 	default:
@@ -733,12 +734,12 @@ public class TaskAllocAggregator extends SimulationElement {
 	    consumers.add(registrationMsg.getSender());
 	    // log.info("Consumer Registered");
 	    this.sendMessage(SimulationMessageFactory.getRegisterAccept(inputQueueName,
-		    registrationMsg.getSender()));
+		    registrationMsg.getSender()), false);
 	    numberOfConsumers++;
 	} else {
 	    // log.info("Consumer ALREADY Registered");
 	    this.sendMessage(SimulationMessageFactory.getRegisterDeny(inputQueueName,
-		    registrationMsg.getSender()));
+		    registrationMsg.getSender()), false);
 	}
     }
 

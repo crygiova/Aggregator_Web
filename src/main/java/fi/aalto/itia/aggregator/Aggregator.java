@@ -101,7 +101,8 @@ public class Aggregator extends SimulationElement {
 
     static {
 	Properties properties = Utility.getProperties(FILE_NAME_PROPERTIES);
-	targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
+	// targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
+	targetFlex = ADR_EM_Common.TARGET_FLEX;
 	baseNominal = Double.parseDouble(properties.getProperty(BASE_NOMINAL));
 	PERCENT_ERROR = Double.parseDouble(properties.getProperty(PER_ERROR));
 	// Percentage nominal error
