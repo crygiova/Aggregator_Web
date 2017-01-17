@@ -59,7 +59,8 @@ public class TaskAllocAggregator extends SimulationElement {
     // for the run method says the max number of loops for an update(e.g. if
     // aggregator checks every 30 sec, every 5 min (10) there must be an update)
 
-    private static int MAX_NUM_LOOP = 15 * ADR_EM_Common.ONE_MIN_IN_SEC / TAU;
+    private static final int MAX_NUM_LOOP = 15 * ADR_EM_Common.ONE_MIN_IN_SEC / TAU;
+    private static int policies_loop = 0;
     // minutes
     private static final int INITIAL_DELAY_SEC = 2 * 60;
     // factor of consumer that sent an update that were involved in the DR
@@ -177,8 +178,6 @@ public class TaskAllocAggregator extends SimulationElement {
     public void run() {
 	// init as max so it execute immediately the instructions algorithm
 	if (USE_POLICIES) {
-	    // ONE UPDATE PER HOUR
-	    MAX_NUM_LOOP = 4 * MAX_NUM_LOOP;
 	    // NO dead_control
 	    enableDeadControl = false;
 	}
@@ -208,8 +207,13 @@ public class TaskAllocAggregator extends SimulationElement {
 	    // consumersUpdates.values()));
 
 	    if (countLoops == MAX_NUM_LOOP) {// update
-		TreeMap<String, InstructionsMessageContent> instrMap = elaborateInstructionsV4(new ArrayList<UpdateMessageContent>(
-			consumersUpdates.values()));
+		TreeMap<String, InstructionsMessageContent> instrMap = new TreeMap<String, InstructionsMessageContent>();
+		if (!USE_POLICIES || (USE_POLICIES && policies_loop++ % 4 == 0)) {
+		    instrMap = elaborateInstructionsV4(new ArrayList<UpdateMessageContent>(
+			    consumersUpdates.values()));
+		} else {
+		    updateBaseNominal();
+		}
 		if (injectErrors) {
 		    sendInstructionsWithErrors(instrMap);
 		} else {
@@ -452,12 +456,17 @@ public class TaskAllocAggregator extends SimulationElement {
 	log.info("ALLOC:" + adrReactionOverFreq.size() + "  RESERVES" + adrReservesOverFreq.size());
 	log.info("\n**********End Algorithm********************");
 
+	updateBaseNominal();
+
+	return outMsg;
+    }
+
+    public void updateBaseNominal() {
 	// SET Base nominal if constant
 	if (useConstantBaseNominal) {
 	    baseNominal = theoreticalConsumption.getLast();
 	    deadBandControl();
 	}
-	return outMsg;
     }
 
     // change this one when there is a message coming in for each actor
@@ -548,202 +557,206 @@ public class TaskAllocAggregator extends SimulationElement {
     }
 
     private synchronized void deadBandControl() {
-	double deltaControl = Math.abs(aggregatedNoADRConsumption - baseNominal);
-	// 1KwDistance
-	if (aggregatedNoADRConsumption < baseNominal - THRESHOLD_DEAD_CONTROL) {
-	    log.info("aggregatedNoADRConsumption < baseNomial");
-	    // baseNominal > aggregatedNoADRConsumption -> need to consume
-	    if (!adrDeadUnderFreq.isEmpty()) {
-		// log.info("!adrDeadUnderFreq.isEmpty()");
-		// if not empty need to send a stop messageto all of the
-		// consumers
-		for (Map.Entry<String, ConsumerFlexInfo> entry : adrDeadUnderFreq.entrySet()) {
-		    // log.info("Loop 1");
-		    ConsumerFlexInfo reserve = entry.getValue();
-		    String reserveName = reserve.getName();
-		    // deallocate
-		    InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d, 0d, 0d,
-			    reserveName);
-		    // send MSg to substitute
-		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-			    this.inputQueueName, reserveName, imc));
-		}
-		// empty the set
-		adrDeadUnderFreq.clear();
-	    }
-	    double currentDeadControl = countCurrentDeadControl(adrDeadOverFreq);
-	    double newDeadControl = Math.abs(currentDeadControl - deltaControl);
-	    // log.info("DISTANCE TO BE COVERED NewDeadControl" +
-	    // newDeadControl);
-	    if (newDeadControl > 0d) {
-		if (currentDeadControl > deltaControl) {
-		    // log.info("currentDeadControl > deltaControl");
-		    // need less control
-		    // send empty message to some elements in
-		    // adrNominalAboveFreq
-		    while (!adrDeadOverFreq.isEmpty() && newDeadControl > 0) {
-			log.info("Loop 2");
-			if (adrDeadOverFreq.entrySet().iterator().hasNext()) {
-			    log.info("Loop 2 Remove");
-			    ConsumerFlexInfo reserve = adrDeadOverFreq.entrySet().iterator().next()
-				    .getValue();
-			    String reserveName = reserve.getName();
-			    double flex = reserve.getFlexibility();
-			    // deallocate
-			    InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d,
-				    0d, 0d, reserveName);
-			    // send MSg to substitute
-			    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-				    this.inputQueueName, reserveName, imc));
-			    adrDeadOverFreq.remove(reserveName);
-			    newDeadControl -= flex;// FRIDGE_CONSUMPTION;
-			} else {
-			    break;
-			}
+	// if enabled the dead control
+	if (enableDeadControl) {
+	    double deltaControl = Math.abs(aggregatedNoADRConsumption - baseNominal);
+	    // 1KwDistance
+	    if (aggregatedNoADRConsumption < baseNominal - THRESHOLD_DEAD_CONTROL) {
+		log.info("aggregatedNoADRConsumption < baseNomial");
+		// baseNominal > aggregatedNoADRConsumption -> need to consume
+		if (!adrDeadUnderFreq.isEmpty()) {
+		    // log.info("!adrDeadUnderFreq.isEmpty()");
+		    // if not empty need to send a stop messageto all of the
+		    // consumers
+		    for (Map.Entry<String, ConsumerFlexInfo> entry : adrDeadUnderFreq.entrySet()) {
+			// log.info("Loop 1");
+			ConsumerFlexInfo reserve = entry.getValue();
+			String reserveName = reserve.getName();
+			// deallocate
+			InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d, 0d,
+				0d, reserveName);
+			// send MSg to substitute
+			this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+				this.inputQueueName, reserveName, imc));
 		    }
-		} else if (currentDeadControl < deltaControl) {
-		    // log.info("currentDeadControl < deltaControl");
-		    // need more control
-		    // allocate new element in adrNominalAboveFreq
-		    double freq = NOMINAL_FREQ - freqDeadBand - MAX_FCRN_FREQ_VARIATION;
-		    while (!adrReservesOverFreq.isEmpty() && newDeadControl > 0) {
-			// log.info("Loop 3");
-			if (adrReservesOverFreq.entrySet().iterator().hasNext()) {
-			    ConsumerFlexInfo reserve = adrReservesOverFreq.entrySet().iterator()
-				    .next().getValue();
-			    double flex = reserve.getFlexibility();
-			    String reserveName = reserve.getName();
-			    reserve.setFrequencyAllocated(freq);
-			    InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d,
-				    flex, freq, reserveName);
-			    // send MSg to substitute
-			    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-				    this.inputQueueName, reserveName, imc));
-			    adrReservesOverFreq.remove(reserveName);
-			    adrDeadOverFreq.put(reserveName, reserve);
-			    newDeadControl -= flex;// FRIDGE_CONSUMPTION;// TODO
-						   // XXX
-						   // CHANGE
-			    if (consumersUpdates.containsKey(reserveName)) {
-				// remove from the ADR control
-				consumersUpdates.remove(reserveName);
+		    // empty the set
+		    adrDeadUnderFreq.clear();
+		}
+		double currentDeadControl = countCurrentDeadControl(adrDeadOverFreq);
+		double newDeadControl = Math.abs(currentDeadControl - deltaControl);
+		// log.info("DISTANCE TO BE COVERED NewDeadControl" +
+		// newDeadControl);
+		if (newDeadControl > 0d) {
+		    if (currentDeadControl > deltaControl) {
+			// log.info("currentDeadControl > deltaControl");
+			// need less control
+			// send empty message to some elements in
+			// adrNominalAboveFreq
+			while (!adrDeadOverFreq.isEmpty() && newDeadControl > 0) {
+			    log.info("Loop 2");
+			    if (adrDeadOverFreq.entrySet().iterator().hasNext()) {
+				log.info("Loop 2 Remove");
+				ConsumerFlexInfo reserve = adrDeadOverFreq.entrySet().iterator()
+					.next().getValue();
+				String reserveName = reserve.getName();
+				double flex = reserve.getFlexibility();
+				// deallocate
+				InstructionsMessageContent imc = new InstructionsMessageContent(0d,
+					0d, 0d, 0d, reserveName);
+				// send MSg to substitute
+				this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+					this.inputQueueName, reserveName, imc));
+				adrDeadOverFreq.remove(reserveName);
+				newDeadControl -= flex;// FRIDGE_CONSUMPTION;
+			    } else {
+				break;
 			    }
-			} else {
-			    break;
 			}
-		    }
-		}
-	    }
-	} else if (aggregatedNoADRConsumption > baseNominal + THRESHOLD_DEAD_CONTROL) {
-	    // baseNominal < aggregatedNoADRConsumption -> need to save
-	    log.info("aggregatedNoADRConsumption > baseNomial ");
-	    if (!adrDeadOverFreq.isEmpty()) {
-		// if not empty need to send a stop message to all of the
-		// consumers
-		for (Map.Entry<String, ConsumerFlexInfo> entry : adrDeadOverFreq.entrySet()) {
-		    // log.info("Loop 4");
-		    ConsumerFlexInfo reserve = entry.getValue();
-		    String reserveName = reserve.getName();
-		    double flex = reserve.getFlexibility();
-		    // deallocate
-		    InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d, 0d, 0d,
-			    reserveName);
-		    // send empty Msg
-		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-			    this.inputQueueName, reserveName, imc));
-		}
-		// empty the set
-		adrDeadOverFreq.clear();
-	    }
-
-	    double currentDeadControl = countCurrentDeadControl(adrDeadUnderFreq);
-	    double newDeadControl = Math.abs(currentDeadControl - deltaControl);
-	    // log.info("(newDeadControl > 100)" + (newDeadControl >
-	    // THRESHOLD_DEAD_CONTROL));
-	    if (newDeadControl > 0d) {
-		if (currentDeadControl > deltaControl) {
-		    // log.info("currentDeadControl > deltaControl");
-		    // need lees control
-		    // send empty message to some elements in
-		    // adrConsumersBelowFreq
-		    while (!adrDeadUnderFreq.isEmpty() && newDeadControl > 0) {
-			// log.info("Loop 5");
-			if (adrDeadUnderFreq.entrySet().iterator().hasNext()) {
-			    ConsumerFlexInfo reserve = adrDeadUnderFreq.entrySet().iterator()
-				    .next().getValue();
-			    String reserveName = reserve.getName();
-			    double flex = reserve.getFlexibility();
-			    // deallocate
-			    InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d,
-				    0d, 0d, reserveName);
-			    // send MSg to substitute
-			    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-				    this.inputQueueName, reserveName, imc));
-			    adrDeadUnderFreq.remove(reserveName);
-			    newDeadControl -= flex;
-			} else {
-			    break;
-			}
-		    }
-		}
-
-		if (currentDeadControl < deltaControl) {
-		    // log.info("currentDeadControl < deltaControl");
-		    // need more control
-		    // allocate new element in adrConsumersBelowFreq
-		    double freq = NOMINAL_FREQ + freqDeadBand + MAX_FCRN_FREQ_VARIATION;
-		    while (!adrReservesUnderFreq.isEmpty() && newDeadControl > 0) {
-			if (adrReservesUnderFreq.entrySet().iterator().hasNext()) {
-			    // log.info("Loop 6");
-			    ConsumerFlexInfo reserve = adrReservesUnderFreq.entrySet().iterator()
-				    .next().getValue();
-			    double flex = reserve.getFlexibility();
-			    String reserveName = reserve.getName();
-			    reserve.setFrequencyAllocated(freq);
-			    InstructionsMessageContent imc = new InstructionsMessageContent(flex,
-				    freq, 0d, 0d, reserveName);
-			    // send MSg to substitute
-			    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-				    this.inputQueueName, reserveName, imc));
-			    adrReservesUnderFreq.remove(reserveName);
-			    adrDeadUnderFreq.put(reserveName, reserve);
-			    newDeadControl -= flex;
-			    if (consumersUpdates.containsKey(reserveName)) {
-				// remove from the ADR control
-				consumersUpdates.remove(reserveName);
+		    } else if (currentDeadControl < deltaControl) {
+			// log.info("currentDeadControl < deltaControl");
+			// need more control
+			// allocate new element in adrNominalAboveFreq
+			double freq = NOMINAL_FREQ - freqDeadBand - MAX_FCRN_FREQ_VARIATION;
+			while (!adrReservesOverFreq.isEmpty() && newDeadControl > 0) {
+			    // log.info("Loop 3");
+			    if (adrReservesOverFreq.entrySet().iterator().hasNext()) {
+				ConsumerFlexInfo reserve = adrReservesOverFreq.entrySet()
+					.iterator().next().getValue();
+				double flex = reserve.getFlexibility();
+				String reserveName = reserve.getName();
+				reserve.setFrequencyAllocated(freq);
+				InstructionsMessageContent imc = new InstructionsMessageContent(0d,
+					0d, flex, freq, reserveName);
+				// send MSg to substitute
+				this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+					this.inputQueueName, reserveName, imc));
+				adrReservesOverFreq.remove(reserveName);
+				adrDeadOverFreq.put(reserveName, reserve);
+				newDeadControl -= flex;// FRIDGE_CONSUMPTION;//
+						       // TODO
+						       // XXX
+						       // CHANGE
+				if (consumersUpdates.containsKey(reserveName)) {
+				    // remove from the ADR control
+				    consumersUpdates.remove(reserveName);
+				}
+			    } else {
+				break;
 			    }
-			} else {
-			    break;
 			}
 		    }
 		}
-	    }
-	} else {
-	}/*
-	  * // Empty all for (Map.Entry<String, ConsumerFlexInfo> entry :
-	  * adrDeadOverFreq.entrySet()) { ConsumerFlexInfo reserve =
-	  * entry.getValue(); String reserveName = reserve.getName(); //
-	  * deallocate InstructionsMessageContent imc = new
-	  * InstructionsMessageContent(0d, 0d, 0d, 0d, reserveName); // send
-	  * empty Msg
-	  * this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-	  * this.inputQueueName, reserveName, imc)); }
-	  * 
-	  * for (Map.Entry<String, ConsumerFlexInfo> entry :
-	  * adrDeadUnderFreq.entrySet()) { ConsumerFlexInfo reserve =
-	  * entry.getValue(); String reserveName = reserve.getName(); //
-	  * deallocate InstructionsMessageContent imc = new
-	  * InstructionsMessageContent(0d, 0d, 0d, 0d, reserveName); // send MSg
-	  * to substitute
-	  * this.sendMessage(SimulationMessageFactory.getInstructionMessage(
-	  * this.inputQueueName, reserveName, imc)); } }
-	  */
+	    } else if (aggregatedNoADRConsumption > baseNominal + THRESHOLD_DEAD_CONTROL) {
+		// baseNominal < aggregatedNoADRConsumption -> need to save
+		log.info("aggregatedNoADRConsumption > baseNomial ");
+		if (!adrDeadOverFreq.isEmpty()) {
+		    // if not empty need to send a stop message to all of the
+		    // consumers
+		    for (Map.Entry<String, ConsumerFlexInfo> entry : adrDeadOverFreq.entrySet()) {
+			// log.info("Loop 4");
+			ConsumerFlexInfo reserve = entry.getValue();
+			String reserveName = reserve.getName();
+			double flex = reserve.getFlexibility();
+			// deallocate
+			InstructionsMessageContent imc = new InstructionsMessageContent(0d, 0d, 0d,
+				0d, reserveName);
+			// send empty Msg
+			this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+				this.inputQueueName, reserveName, imc));
+		    }
+		    // empty the set
+		    adrDeadOverFreq.clear();
+		}
 
-	log.info("AGG_CONS_NO_ADR: " + aggregatedNoADRConsumption);
-	log.info("BASE NOM: " + baseNominal);
-	log.info("DIfference : " + (aggregatedNoADRConsumption - baseNominal));
-	log.info("UNDER DEAD CONTROL: " + adrDeadUnderFreq.size());
-	log.info("OVER DEAD CONTROL: " + adrDeadOverFreq.size());
+		double currentDeadControl = countCurrentDeadControl(adrDeadUnderFreq);
+		double newDeadControl = Math.abs(currentDeadControl - deltaControl);
+		// log.info("(newDeadControl > 100)" + (newDeadControl >
+		// THRESHOLD_DEAD_CONTROL));
+		if (newDeadControl > 0d) {
+		    if (currentDeadControl > deltaControl) {
+			// log.info("currentDeadControl > deltaControl");
+			// need lees control
+			// send empty message to some elements in
+			// adrConsumersBelowFreq
+			while (!adrDeadUnderFreq.isEmpty() && newDeadControl > 0) {
+			    // log.info("Loop 5");
+			    if (adrDeadUnderFreq.entrySet().iterator().hasNext()) {
+				ConsumerFlexInfo reserve = adrDeadUnderFreq.entrySet().iterator()
+					.next().getValue();
+				String reserveName = reserve.getName();
+				double flex = reserve.getFlexibility();
+				// deallocate
+				InstructionsMessageContent imc = new InstructionsMessageContent(0d,
+					0d, 0d, 0d, reserveName);
+				// send MSg to substitute
+				this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+					this.inputQueueName, reserveName, imc));
+				adrDeadUnderFreq.remove(reserveName);
+				newDeadControl -= flex;
+			    } else {
+				break;
+			    }
+			}
+		    }
+
+		    if (currentDeadControl < deltaControl) {
+			// log.info("currentDeadControl < deltaControl");
+			// need more control
+			// allocate new element in adrConsumersBelowFreq
+			double freq = NOMINAL_FREQ + freqDeadBand + MAX_FCRN_FREQ_VARIATION;
+			while (!adrReservesUnderFreq.isEmpty() && newDeadControl > 0) {
+			    if (adrReservesUnderFreq.entrySet().iterator().hasNext()) {
+				// log.info("Loop 6");
+				ConsumerFlexInfo reserve = adrReservesUnderFreq.entrySet()
+					.iterator().next().getValue();
+				double flex = reserve.getFlexibility();
+				String reserveName = reserve.getName();
+				reserve.setFrequencyAllocated(freq);
+				InstructionsMessageContent imc = new InstructionsMessageContent(
+					flex, freq, 0d, 0d, reserveName);
+				// send MSg to substitute
+				this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+					this.inputQueueName, reserveName, imc));
+				adrReservesUnderFreq.remove(reserveName);
+				adrDeadUnderFreq.put(reserveName, reserve);
+				newDeadControl -= flex;
+				if (consumersUpdates.containsKey(reserveName)) {
+				    // remove from the ADR control
+				    consumersUpdates.remove(reserveName);
+				}
+			    } else {
+				break;
+			    }
+			}
+		    }
+		}
+	    } else {
+	    }/*
+	      * // Empty all for (Map.Entry<String, ConsumerFlexInfo> entry :
+	      * adrDeadOverFreq.entrySet()) { ConsumerFlexInfo reserve =
+	      * entry.getValue(); String reserveName = reserve.getName(); //
+	      * deallocate InstructionsMessageContent imc = new
+	      * InstructionsMessageContent(0d, 0d, 0d, 0d, reserveName); // send
+	      * empty Msg
+	      * this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+	      * this.inputQueueName, reserveName, imc)); }
+	      * 
+	      * for (Map.Entry<String, ConsumerFlexInfo> entry :
+	      * adrDeadUnderFreq.entrySet()) { ConsumerFlexInfo reserve =
+	      * entry.getValue(); String reserveName = reserve.getName(); //
+	      * deallocate InstructionsMessageContent imc = new
+	      * InstructionsMessageContent(0d, 0d, 0d, 0d, reserveName); // send
+	      * MSg to substitute
+	      * this.sendMessage(SimulationMessageFactory.getInstructionMessage(
+	      * this.inputQueueName, reserveName, imc)); } }
+	      */
+
+	    log.info("AGG_CONS_NO_ADR: " + aggregatedNoADRConsumption);
+	    log.info("BASE NOM: " + baseNominal);
+	    log.info("DIfference : " + (aggregatedNoADRConsumption - baseNominal));
+	    log.info("UNDER DEAD CONTROL: " + adrDeadUnderFreq.size());
+	    log.info("OVER DEAD CONTROL: " + adrDeadOverFreq.size());
+	}
     }
 
     private double countCurrentDeadControl(Map<String, ConsumerFlexInfo> setOfCOnsumers) {

@@ -1,0 +1,64 @@
+gen 17, 2017 1:52:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator run
+INFO: Start Aggregator
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: **********Elaborate Instructions********************
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: +++++++++++++++++++ TargetFlex = 25000.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+Under Freq:
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: TOTAL FLEX UNDER : 25000.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:250  RESERVES373
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+Above Freq
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: TOTAL FLEX Above : 25000.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:250  RESERVES1627
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+**********End Algorithm********************
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 62200.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 62200.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 0.0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+gen 17, 2017 1:54:22 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: **********Elaborate Instructions********************
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: +++++++++++++++++++ TargetFlex = 25000.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+Under Freq:
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: TOTAL FLEX UNDER : 25000.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:250  RESERVES416
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+Above Freq
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: TOTAL FLEX Above : 25000.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:250  RESERVES1584
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: 
+**********End Algorithm********************
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 66500.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 66500.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 0.0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+gen 17, 2017 2:54:24 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
