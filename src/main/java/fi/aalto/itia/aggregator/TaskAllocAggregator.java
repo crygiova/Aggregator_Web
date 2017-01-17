@@ -59,7 +59,7 @@ public class TaskAllocAggregator extends SimulationElement {
     // for the run method says the max number of loops for an update(e.g. if
     // aggregator checks every 30 sec, every 5 min (10) there must be an update)
 
-    private static final int MAX_NUM_LOOP = 15 * ADR_EM_Common.ONE_MIN_IN_SEC / TAU;
+    private static int MAX_NUM_LOOP = 15 * ADR_EM_Common.ONE_MIN_IN_SEC / TAU;
     // minutes
     private static final int INITIAL_DELAY_SEC = 2 * 60;
     // factor of consumer that sent an update that were involved in the DR
@@ -93,7 +93,7 @@ public class TaskAllocAggregator extends SimulationElement {
     private static final double THRESHOLD_DEAD_CONTROL = 250;
     // TODO XXX DELETE THIS ONCE THE SMALL BUG WITH THE DEAD BAND CONTROL IS
     // SOLVEd
-    //private static final double FRIDGE_CONSUMPTION = 100d;
+    // private static final double FRIDGE_CONSUMPTION = 100d;
 
     private static final boolean useConstantBaseNominal;
 
@@ -123,9 +123,11 @@ public class TaskAllocAggregator extends SimulationElement {
     //
     private boolean firstAllocation = true;
 
+    private final boolean USE_POLICIES = ADR_EM_Common.USE_POLICIES;
+
     static {
 	Properties properties = Utility.getProperties(FILE_NAME_PROPERTIES);
-	//targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
+	// targetFlex = Double.parseDouble(properties.getProperty(TARGET_FLEX));
 	targetFlex = ADR_EM_Common.TARGET_FLEX;
 	baseNominal = Double.parseDouble(properties.getProperty(BASE_NOMINAL));
 	PERCENT_ERROR = Double.parseDouble(properties.getProperty(PER_ERROR));
@@ -174,6 +176,12 @@ public class TaskAllocAggregator extends SimulationElement {
     @Override
     public void run() {
 	// init as max so it execute immediately the instructions algorithm
+	if (USE_POLICIES) {
+	    // ONE UPDATE PER HOUR
+	    MAX_NUM_LOOP = 4 * MAX_NUM_LOOP;
+	    // NO dead_control
+	    enableDeadControl = false;
+	}
 	int countLoops = MAX_NUM_LOOP;
 
 	this.startConsumingMq();
@@ -202,12 +210,6 @@ public class TaskAllocAggregator extends SimulationElement {
 	    if (countLoops == MAX_NUM_LOOP) {// update
 		TreeMap<String, InstructionsMessageContent> instrMap = elaborateInstructionsV4(new ArrayList<UpdateMessageContent>(
 			consumersUpdates.values()));
-		if (countLoops == MAX_NUM_LOOP) {
-		    log.info("COUNT LOOP MAX ");
-		} else {
-		    log.info("COUNTERs TRIGGERED THE UPDATE");
-		}
-		// if errors are to be injected
 		if (injectErrors) {
 		    sendInstructionsWithErrors(instrMap);
 		} else {
@@ -218,7 +220,7 @@ public class TaskAllocAggregator extends SimulationElement {
 
 		countLoops = 0;
 	    }
-	    // deadband control
+	    // deadband control, should not be if USE Policies
 	    if (!firstAllocation && enableDeadControl) {
 		this.deadBandControl();
 	    }
@@ -490,7 +492,12 @@ public class TaskAllocAggregator extends SimulationElement {
 	    // add the consumer to the set
 	    addConsumer(sm);
 	    // Add the update
-	    addToConsumersUpdates(sm.getContent());
+	    if (USE_POLICIES) {
+		addToConsumersUpdatedPolicies(sm.getContent());
+	    } else {
+		addToConsumersUpdates(sm.getContent());
+	    }
+
 	    break;
 	case ADR_EM_Common.STATUS_UPDATE_HEADER:
 	    // if the consumer is already registered
@@ -507,15 +514,37 @@ public class TaskAllocAggregator extends SimulationElement {
 	    if (!useConstantBaseNominal) {
 		baseNominal = theoreticalConsumption.getMean();
 	    }
-	    //NoDElay Message
-	    this.sendMessage(SimulationMessageFactory.getStatsToAggUpdateMessage(
-		    this.inputQueueName, sm.getSender(), new StatsToAggUpdateContent(baseNominal)), false);
+	    // NoDElay Message
+	    this.sendMessage(
+		    SimulationMessageFactory.getStatsToAggUpdateMessage(this.inputQueueName,
+			    sm.getSender(), new StatsToAggUpdateContent(baseNominal)), false);
 	    // printout
 	    break;
 	default:
 	    addMessage(sm);
 	    break;
 	}
+    }
+
+    private void addToConsumersUpdatedPolicies(Serializable umc) {
+	if (umc instanceof UpdateMessageContent) {
+	    UpdateMessageContent uMsg = (UpdateMessageContent) umc;
+	    // Consumer Identifier
+	    String consumerIoQueue = uMsg.getConsumerSender();
+	    // says if the update needs to be added to the consumer updates
+
+	    // this can be improved (what if one consumer keeps sending
+	    // updates??)
+	    this.newUpdates++;
+	    // log.info("UPDATE CONSUMER" + consumerIoQueue)
+	    // Overwrite with the last update
+
+	    consumersUpdates.put(consumerIoQueue, uMsg);
+
+	} else {
+	    log.info("Message SENt WITHOUT UPDATE CONTENT");
+	}
+
     }
 
     private synchronized void deadBandControl() {
@@ -567,7 +596,7 @@ public class TaskAllocAggregator extends SimulationElement {
 			    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
 				    this.inputQueueName, reserveName, imc));
 			    adrDeadOverFreq.remove(reserveName);
-			    newDeadControl -= flex;//FRIDGE_CONSUMPTION;
+			    newDeadControl -= flex;// FRIDGE_CONSUMPTION;
 			} else {
 			    break;
 			}
@@ -592,8 +621,9 @@ public class TaskAllocAggregator extends SimulationElement {
 				    this.inputQueueName, reserveName, imc));
 			    adrReservesOverFreq.remove(reserveName);
 			    adrDeadOverFreq.put(reserveName, reserve);
-			    newDeadControl -= flex;//FRIDGE_CONSUMPTION;// TODO XXX
-								 // CHANGE
+			    newDeadControl -= flex;// FRIDGE_CONSUMPTION;// TODO
+						   // XXX
+						   // CHANGE
 			    if (consumersUpdates.containsKey(reserveName)) {
 				// remove from the ADR control
 				consumersUpdates.remove(reserveName);
@@ -723,7 +753,7 @@ public class TaskAllocAggregator extends SimulationElement {
 	    // log.info("Loop 10");
 	    ConsumerFlexInfo reserve = entry.getValue();
 	    currendDeadControl += reserve.getFlexibility();// TODO
-						     // reserve.getFlexibility();
+							   // reserve.getFlexibility();
 	}
 	return currendDeadControl;
     }
@@ -733,13 +763,15 @@ public class TaskAllocAggregator extends SimulationElement {
 	if (!consumers.contains(registrationMsg.getSender())) {
 	    consumers.add(registrationMsg.getSender());
 	    // log.info("Consumer Registered");
-	    this.sendMessage(SimulationMessageFactory.getRegisterAccept(inputQueueName,
-		    registrationMsg.getSender()), false);
+	    this.sendMessage(
+		    SimulationMessageFactory.getRegisterAccept(inputQueueName,
+			    registrationMsg.getSender()), false);
 	    numberOfConsumers++;
 	} else {
 	    // log.info("Consumer ALREADY Registered");
-	    this.sendMessage(SimulationMessageFactory.getRegisterDeny(inputQueueName,
-		    registrationMsg.getSender()), false);
+	    this.sendMessage(
+		    SimulationMessageFactory.getRegisterDeny(inputQueueName,
+			    registrationMsg.getSender()), false);
 	}
     }
 
@@ -817,8 +849,7 @@ public class TaskAllocAggregator extends SimulationElement {
 		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
 			    this.inputQueueName, consumerIoQueue, imc));
 		    // TODO XXX Send the new Update
-		    imc = new InstructionsMessageContent(0d, 0d, flex,
-			    freq, reserveName);
+		    imc = new InstructionsMessageContent(0d, 0d, flex, freq, reserveName);
 		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
 			    this.inputQueueName, reserveName, imc));
 		    // remove it
@@ -851,8 +882,7 @@ public class TaskAllocAggregator extends SimulationElement {
 		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
 			    this.inputQueueName, consumerIoQueue, imc));
 		    // send MSg to substitute
-		    imc = new InstructionsMessageContent(flex, freq, 0d,
-			    0d, reserveName);
+		    imc = new InstructionsMessageContent(flex, freq, 0d, 0d, reserveName);
 		    this.sendMessage(SimulationMessageFactory.getInstructionMessage(
 			    this.inputQueueName, reserveName, imc));
 		    // remove prevous
@@ -963,7 +993,10 @@ public class TaskAllocAggregator extends SimulationElement {
     }
 
     public void setEnableDeadControl(boolean disableDeadControl) {
-	this.enableDeadControl = disableDeadControl;
+	if (!USE_POLICIES)
+	    this.enableDeadControl = disableDeadControl;
+	else
+	    this.enableDeadControl = false;
     }
 
     @Override
