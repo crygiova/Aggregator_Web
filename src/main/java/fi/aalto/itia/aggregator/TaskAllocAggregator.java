@@ -86,7 +86,7 @@ public class TaskAllocAggregator extends SimulationElement {
     // calculated consumption without ADR
     private double aggregatedNoADRConsumption = baseNominal;
     // base nominal updated by taking the mean ove the last n elements
-    private final static int MEAN_BASE_NOMINAL = 75;
+    private final static int MEAN_BASE_NOMINAL = 5;
     // real theoretical consumption
     private final static MaxSizedArray theoreticalConsumption = new MaxSizedArray(MEAN_BASE_NOMINAL);
     // the threashold distance between the baseNOminal and the real
