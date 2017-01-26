@@ -1,23 +1,321 @@
-Jan 23, 2017 6:15:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator run
+Jan 26, 2017 12:00:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator run
 INFO: Start Aggregator
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: **********Elaborate Instructions********************
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: +++++++++++++++++++ TargetFlex = 50000.0
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: 
 Under Freq:
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: TOTAL FLEX UNDER : 50000.0
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
-INFO: ALLOC:500  RESERVES658
-Jan 23, 2017 6:17:28 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:500  RESERVES678
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: 
 Above Freq
-Jan 23, 2017 6:17:29 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: TOTAL FLEX Above : 50000.0
-Jan 23, 2017 6:17:29 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
-INFO: ALLOC:500  RESERVES3342
-Jan 23, 2017 6:17:29 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
+INFO: ALLOC:500  RESERVES3322
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator elaborateInstructionsV4
 INFO: 
 **********End Algorithm********************
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117700.0
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 0.0
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:02:47 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:02:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117700.0
+Jan 26, 2017 12:02:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:02:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 0.0
+Jan 26, 2017 12:02:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:02:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:03:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117700.0
+Jan 26, 2017 12:03:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:03:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 0.0
+Jan 26, 2017 12:03:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:03:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:03:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117500.0
+Jan 26, 2017 12:03:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:03:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -200.0
+Jan 26, 2017 12:03:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:03:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117400.0
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -300.0
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:03:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 3
+Jan 26, 2017 12:03:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117900.0
+Jan 26, 2017 12:03:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:03:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 200.0
+Jan 26, 2017 12:03:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:03:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 3
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117400.0
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -300.0
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:04:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 3
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117300.0
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -400.0
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:04:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 4
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117100.0
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -600.0
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:04:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 6
+Jan 26, 2017 12:04:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117600.0
+Jan 26, 2017 12:04:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:04:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -100.0
+Jan 26, 2017 12:04:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:04:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 6
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118000.0
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 300.0
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 3
+Jan 26, 2017 12:05:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118100.0
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 400.0
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:05:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:05:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117500.0
+Jan 26, 2017 12:05:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:05:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -200.0
+Jan 26, 2017 12:05:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:05:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118100.0
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 400.0
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:05:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118200.0
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 500.0
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 5
+Jan 26, 2017 12:06:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118900.0
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 1200.0
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 12
+Jan 26, 2017 12:06:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118700.0
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 1000.0
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 10
+Jan 26, 2017 12:06:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118800.0
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 1100.0
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 11
+Jan 26, 2017 12:06:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118200.0
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 500.0
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 5
+Jan 26, 2017 12:07:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118600.0
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 900.0
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 9
+Jan 26, 2017 12:07:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118500.0
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 800.0
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 8
+Jan 26, 2017 12:07:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption > baseNomial 
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 118100.0
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : 400.0
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:07:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:08:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117500.0
+Jan 26, 2017 12:08:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:08:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -200.0
+Jan 26, 2017 12:08:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:08:03 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:08:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117500.0
+Jan 26, 2017 12:08:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:08:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -200.0
+Jan 26, 2017 12:08:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 4
+Jan 26, 2017 12:08:18 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 0
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117200.0
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -500.0
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:08:33 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 5
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: aggregatedNoADRConsumption < baseNomial
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: Loop 2
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: Loop 2 Remove
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: AGG_CONS_NO_ADR: 117300.0
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: BASE NOM: 117700.0
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: DIfference : -400.0
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: UNDER DEAD CONTROL: 0
+Jan 26, 2017 12:08:48 PM fi.aalto.itia.aggregator.TaskAllocAggregator deadBandControl
+INFO: OVER DEAD CONTROL: 4
